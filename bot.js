@@ -74,11 +74,6 @@ bot.on('callback_query', async (callbackQuery) => {
 });
 
 function startRecommendationProcess(chatId) {
-
-    if (!userSessions[chatId]) {
-        userSessions[chatId] = {};  // Initialize an empty session if it doesn't exist
-    }
-
     userSessions[chatId] = { recommendations: [] }; // Initialize a new session
     bot.sendMessage(chatId, "Please choose a genre:", {
         reply_markup: {
@@ -88,10 +83,6 @@ function startRecommendationProcess(chatId) {
 }
 
 function handleGenreSelection(chatId, genre) {
-    if (!userSessions[chatId]) {
-        userSessions[chatId] = {};
-    }
-
     userSessions[chatId].genre = genre;
     bot.sendMessage(chatId, "Great! Now, please choose a language:", {
         reply_markup: {
@@ -101,7 +92,28 @@ function handleGenreSelection(chatId, genre) {
 }
 
 async function handleLanguageSelection(chatId, language) {
+
+    // Ensure user session is initialized
+    if (!userSessions[chatId]) {
+        console.log(`Initializing session for chatId: ${chatId}`);
+        userSessions[chatId] = { recommendations: [] }; // Initialize with an empty array
+    }
+
     const userSession = userSessions[chatId];
+
+    // Check if userSession is still undefined
+    if (!userSession) {
+        console.error(`User session for chatId ${chatId} is undefined.`);
+        bot.sendMessage(chatId, "Something went wrong. Please start over.");
+        return;
+    }
+
+    // Check if the userSession has a genre set before setting language
+    if (!userSession.genre) {
+        bot.sendMessage(chatId, "Please select a genre first.");
+        return;
+    }
+
     userSession.language = language;
     bot.sendMessage(chatId, "Fetching movie recommendations for you...");
 
