@@ -74,6 +74,11 @@ bot.on('callback_query', async (callbackQuery) => {
 });
 
 function startRecommendationProcess(chatId) {
+
+    if (!userSessions[chatId]) {
+        userSessions[chatId] = {};  // Initialize an empty session if it doesn't exist
+    }
+
     userSessions[chatId] = { recommendations: [] }; // Initialize a new session
     bot.sendMessage(chatId, "Please choose a genre:", {
         reply_markup: {
