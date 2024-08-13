@@ -2,8 +2,8 @@ const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
 
 // Replace with your bot's token and TMDb API key
-const token = 'YOUR_BOTS_TOKEN';
-const tmdbApiKey = 'YOUR_TMDb_API_TOKEN';
+const token = process.env.YOUR_BOTS_TOKEN;
+const tmdbApiKey = process.env.YOUR_TMDb_API_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
