@@ -1,6 +1,6 @@
-# MovieSuggester Bot
+# Stream Suggester Bot
 
-Welcome to **MovieSuggester Bot**, a Telegram bot that provides personalized movie recommendations based on your preferred genre and language. Powered by [The Movie Database (TMDb)](https://www.themoviedb.org/) API, this bot fetches the most popular movies tailored to your choices.
+Welcome to **Stream Suggester Bot**, a Telegram bot that provides personalized movie recommendations based on your preferred genre and language. Powered by [The Movie Database (TMDb)](https://www.themoviedb.org/) API, this bot fetches the most popular movies tailored to your choices.
 
 ## Features
 
@@ -23,8 +23,8 @@ Welcome to **MovieSuggester Bot**, a Telegram bot that provides personalized mov
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/MovieSuggesterBot.git
-   cd MovieSuggesterBot
+   git clone https://github.com/adhikareeprayush/Stream-Suggester-Telegram-Bot.git
+   cd StreamSuggesterBot
    ```
 
 2. **Install Dependencies**
