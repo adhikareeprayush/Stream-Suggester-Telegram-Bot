@@ -83,6 +83,10 @@ function startRecommendationProcess(chatId) {
 }
 
 function handleGenreSelection(chatId, genre) {
+    if (!userSessions[chatId]) {
+        userSessions[chatId] = {};
+    }
+
     userSessions[chatId].genre = genre;
     bot.sendMessage(chatId, "Great! Now, please choose a language:", {
         reply_markup: {
