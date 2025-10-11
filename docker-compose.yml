@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  stream-suggester:
+    build: .
+    container_name: stream-suggester
+    restart: unless-stopped
+    env_file:
+      - .env
+    # Ensure only one replica is run because the bot uses polling
+    deploy:
+      replicas: 1
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # If you want to mount for development to pick up changes without rebuild:
+    # volumes:
+    #   - ./:/app
